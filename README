@@ -1,0 +1,8 @@
+requires the gcc arm toolchain
+
+most likely does not actually work on any hardware
+
+things to do:
+ * test on actual pi
+ * improve hardware interaction api
+ * ???
