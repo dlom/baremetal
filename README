@@ -2,6 +2,8 @@ requires the gcc arm toolchain
 
 tested on an actual pi (model b)
 
-things to do:
+things in progress:
  * improve hardware interaction api
+
+things to do:
  * ???
