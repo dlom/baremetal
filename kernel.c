@@ -13,24 +13,24 @@ static inline uint32_t mmio_read(uint32_t reg) {
 }
 
 void kernel_wait(uint32_t us) {
-	volatile uint32_t ts = mmio_read(RPI_TIMER + 0x20);
-	while ((mmio_read(RPI_TIMER + 0x20) - ts) < us) {
+	uint32_t ts = mmio_read(RPI_TIMER + sizeof(uint32_t));
+	while ((mmio_read(RPI_TIMER + sizeof(uint32_t)) - ts) < us) {
 		// nop
 	}
 }
 
 void initialize_led() {
-	volatile uint32_t led_init = mmio_read(GPIO_BASE + 0x20);
+	uint32_t led_init = mmio_read(GPIO_BASE + sizeof(uint32_t));
 	led_init |= (1 << 18);
-	mmio_write(GPIO_BASE + 0x020, led_init);
+	mmio_write(GPIO_BASE + sizeof(uint32_t), led_init);
 }
 
 void led_on() {
-	mmio_write(GPIO_BASE + 0x160, (1 << 16));
+	mmio_write(GPIO_BASE + (sizeof(uint32_t) * 10), (1 << 16));
 }
 
 void led_off() {
-	mmio_write(GPIO_BASE + 0x0e0, (1 << 16));
+	mmio_write(GPIO_BASE + (sizeof(uint32_t) *  7), (1 << 16));
 }
 
 void kernel_main() {

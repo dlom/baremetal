@@ -1,8 +1,7 @@
 requires the gcc arm toolchain
 
-most likely does not actually work on any hardware
+tested on an actual pi (model b)
 
 things to do:
- * test on actual pi
  * improve hardware interaction api
  * ???
