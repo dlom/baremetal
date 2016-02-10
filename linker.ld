@@ -1,12 +1,14 @@
 ENTRY(_start)
 SECTIONS
 {
-	. = 0x10000;
-	__start = .;
-	.boot . : { boot.o(.text) }
-	.text : { *(.text) }
+	. = 0x8000;
+	.text : {
+		KEEP(*(.text.boot))
+		*(.text)
+	}
 	.rodata : { *(.rodata) }
 	.data : { *(.data) }
+	__bss_start__ = .;
 	.bss : { *(.bss) }
-	__end = .;
+	__bss_end__ = .;
 }
